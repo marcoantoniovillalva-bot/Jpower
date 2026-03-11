@@ -21,6 +21,8 @@ import { ParticleBackground } from './components/ParticleBackground';
 
 // --- Components ---
 
+const COOKIE_CONSENT_KEY = 'jpower-cookie-consent';
+
 const Logo = ({ className }: { className?: string }) => (
   <div className={cn("flex items-center gap-3", className)}>
     <div className="w-12 h-12 bg-black border-2 border-[#F8C730] rounded-full flex items-center justify-center overflow-hidden shadow-[0_0_15px_rgba(248,199,48,0.3)]">
@@ -137,6 +139,70 @@ const Navbar = () => {
         )}
       </AnimatePresence>
     </nav>
+  );
+};
+
+const PrivacyConsentPopup = ({
+  isOpen,
+  onAccept,
+  onNecessaryOnly,
+}: {
+  isOpen: boolean;
+  onAccept: () => void;
+  onNecessaryOnly: () => void;
+}) => {
+  if (!isOpen) return null;
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 24 }}
+        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+        className="fixed inset-x-4 bottom-4 z-[90] md:inset-x-6 md:bottom-6"
+      >
+        <div className="mx-auto max-w-5xl overflow-hidden rounded-[2rem] border border-white/10 bg-black/85 shadow-[0_25px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl">
+          <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top_right,rgba(248,199,48,0.18),transparent_35%)]" />
+          <div className="relative flex flex-col gap-6 p-6 md:flex-row md:items-end md:justify-between md:p-8">
+            <div className="max-w-3xl">
+              <span className="mb-3 inline-flex items-center rounded-full border border-[#F8C730]/30 bg-[#F8C730]/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.35em] text-[#F8C730]">
+                Privacy e Cookie
+              </span>
+              <h3 className="mb-3 text-2xl font-black tracking-tight text-white md:text-3xl">
+                Gestiamo i cookie con trasparenza.
+              </h3>
+              <p className="text-sm leading-relaxed text-white/65 md:text-base">
+                Usiamo cookie tecnici per il corretto funzionamento del sito e, con il tuo consenso, cookie aggiuntivi per migliorare esperienza e misurazione.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs font-bold uppercase tracking-[0.2em] text-white/45">
+                <a href="/privacy.html" className="transition-colors hover:text-[#F8C730]">
+                  Privacy Policy
+                </a>
+                <a href="/cookie.html" className="transition-colors hover:text-[#F8C730]">
+                  Cookie Policy
+                </a>
+              </div>
+            </div>
+
+            <div className="flex w-full flex-col gap-3 md:w-auto md:min-w-[290px]">
+              <button
+                onClick={onAccept}
+                className="rounded-2xl bg-[#F8C730] px-6 py-4 text-sm font-black uppercase tracking-[0.2em] text-black transition-transform hover:scale-[1.02] active:scale-[0.98]"
+              >
+                Accetta tutti
+              </button>
+              <button
+                onClick={onNecessaryOnly}
+                className="rounded-2xl border border-white/15 bg-white/5 px-6 py-4 text-sm font-black uppercase tracking-[0.2em] text-white transition-colors hover:border-[#F8C730]/40 hover:text-[#F8C730]"
+              >
+                Solo necessari
+              </button>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 
@@ -529,6 +595,21 @@ export default function App() {
   const [selectedService, setSelectedService] = useState<any>(null);
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isPrivacyConsentOpen, setIsPrivacyConsentOpen] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const savedConsent = window.localStorage.getItem(COOKIE_CONSENT_KEY);
+    if (!savedConsent) {
+      setIsPrivacyConsentOpen(true);
+    }
+  }, []);
+
+  const savePrivacyConsent = (mode: 'accepted' | 'necessary') => {
+    window.localStorage.setItem(COOKIE_CONSENT_KEY, mode);
+    setIsPrivacyConsentOpen(false);
+  };
 
   const galleryImages = [
     "/images/500633588_17854079946445501_2580549869276046222_n.webp",
@@ -1162,6 +1243,12 @@ export default function App() {
         </SectionWrapper>
       </main>
 
+      <PrivacyConsentPopup
+        isOpen={isPrivacyConsentOpen}
+        onAccept={() => savePrivacyConsent('accepted')}
+        onNecessaryOnly={() => savePrivacyConsent('necessary')}
+      />
+
       <footer className="py-20 border-t border-white/5 relative z-10">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-12 mb-20">
@@ -1228,3 +1315,4 @@ export default function App() {
     </div>
   );
 }
+
