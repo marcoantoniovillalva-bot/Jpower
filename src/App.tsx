@@ -528,6 +528,24 @@ const SectionWrapper = ({ children, className, id }: { children: React.ReactNode
 export default function App() {
   const [selectedService, setSelectedService] = useState<any>(null);
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const galleryImages = [
+    "/images/500633588_17854079946445501_2580549869276046222_n.webp",
+    "/images/502173004_17854576911445501_8219889089375380371_n.webp",
+    "/images/509713962_623781660094780_7862875565749660320_n.webp",
+    "/images/552135250_17868381168445501_8204053416945411122_n.webp",
+    "/images/557466926_17869320492445501_31454608500293540_n.webp",
+    "/images/632288788_17886851496445501_1581709827445146653_n.webp",
+  ];
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+  };
 
   const services = [
     {
@@ -557,7 +575,7 @@ export default function App() {
         "Consulenza per detrazioni fiscali"
       ],
       icon: Wind,
-      image: "https://images.unsplash.com/photo-1590856029826-c7a73142bbf1?auto=format&fit=crop&q=80&w=800",
+      image: "/images/Whisk_0bfb1700c987cbbbeac4172d11f0cd01dr.jpeg",
       delay: 0.2
     },
     {
@@ -578,12 +596,12 @@ export default function App() {
     {
       title: "Antintrusione",
       description: "Proteggi ciò che ami con sistemi di sicurezza intelligenti, videosorveglianza e allarmi collegati h24 al tuo smartphone.",
-      fullDescription: "La tua sicurezza non ammette compromessi. Installiamo i più avanzati sistemi antintrusione, integrando allarmi perimetrali, sensori di movimento e telecamere ad alta definizione. Tutto è gestibile comodamente dal tuo smartphone per una tranquillità totale, ovunque tu sia.",
+      fullDescription: "La tua sicurezza non ammette compromessi. Installiamo i più avanzati sistemi antintrusione, integrimetrali, sensori di movimento e telecamere ad alta definizione. Tutto è gestibile comodamente dal tuo smartphone per una tranquillitàando allarmi per totale, ovunque tu sia.",
       features: [
         "Allarmi senza fili e cablati",
         "Videosorveglianza IP 4K",
         "Controllo remoto via smartphone",
-        "Integrazione con forze dell'ordine",
+        "Integrazione with forze dell'ordine",
         "Sistemi nebbiogeni"
       ],
       icon: ShieldCheck,
@@ -602,7 +620,7 @@ export default function App() {
         "Sostituzione vecchi impianti"
       ],
       icon: PhoneCall,
-      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=800",
+      image: "/images/Whisk_57338715a1da1afb8d7418871d50ca8edr.jpeg",
       delay: 0.5
     }
   ];
@@ -636,121 +654,6 @@ export default function App() {
                   <div className="text-white/40 text-sm uppercase tracking-widest font-bold">{stat.label}</div>
                 </motion.div>
               ))}
-            </div>
-          </div>
-        </SectionWrapper>
-
-        {/* Chi Siamo Section */}
-        <SectionWrapper id="chi-siamo" className="py-32 overflow-hidden">
-          <div className="container mx-auto px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="relative"
-              >
-                <div className="relative z-10 rounded-[2.5rem] overflow-hidden border border-white/10 group">
-                  <img 
-                    src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=1200" 
-                    alt="Team J Power" 
-                    className="w-full aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-110"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
-                </div>
-                
-                {/* Floating Badge */}
-                <motion.div
-                  animate={{ y: [0, -20, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -bottom-10 -right-10 z-20 bg-[#F8C730] text-black p-8 rounded-3xl shadow-[0_20px_50px_rgba(248,199,48,0.3)] hidden md:block"
-                >
-                  <div className="text-4xl font-black leading-none">10</div>
-                  <div className="text-xs font-bold uppercase tracking-widest">Anni di<br />Eccellenza</div>
-                </motion.div>
-
-                {/* Decorative Circles */}
-                <div className="absolute -top-20 -left-20 w-64 h-64 bg-[#F8C730]/10 blur-3xl rounded-full -z-10" />
-              </motion.div>
-
-              <div>
-                <motion.span 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="text-[#F8C730] font-bold tracking-[0.3em] uppercase text-sm mb-6 block"
-                >
-                  La Nostra Storia
-                </motion.span>
-                <motion.h2 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 }}
-                  className="text-4xl md:text-6xl font-black mb-8 leading-tight"
-                >
-                  PASSIONE PER <br />
-                  <span className="text-white/20 text-stroke-white">L'INNOVAZIONE.</span>
-                </motion.h2>
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 }}
-                  className="space-y-6 text-white/60 text-lg font-light leading-relaxed"
-                >
-                  <p>
-                    J Power nasce dalla visione di portare l'eccellenza tecnica nel mondo dell'energia e della tecnologia. 
-                    Siamo un team di professionisti specializzati che crede fermamente nel potere dell'innovazione per migliorare la vita quotidiana.
-                  </p>
-                  <p>
-                    Ogni progetto che affrontiamo è guidato da tre pilastri fondamentali: 
-                    <span className="text-white font-bold"> sicurezza</span>, 
-                    <span className="text-white font-bold"> efficienza</span> e 
-                    <span className="text-white font-bold"> futuro</span>. 
-                    Non ci limitiamo a installare impianti; progettiamo soluzioni intelligenti che durano nel tempo.
-                  </p>
-                </motion.div>
-
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 }}
-                  className="grid grid-cols-2 gap-8 mt-12"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-[#F8C730]/10 rounded-2xl flex items-center justify-center shrink-0">
-                      <CheckCircle2 className="text-[#F8C730]" size={24} />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-white mb-1">Qualità</h4>
-                      <p className="text-xs text-white/40 uppercase tracking-widest">Materiali Certificati</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-[#F8C730]/10 rounded-2xl flex items-center justify-center shrink-0">
-                      <CheckCircle2 className="text-[#F8C730]" size={24} />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-white mb-1">Supporto</h4>
-                      <p className="text-xs text-white/40 uppercase tracking-widest">Assistenza H24</p>
-                    </div>
-                  </div>
-                </motion.div>
-
-                <motion.button
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.4 }}
-                  onClick={() => setIsAboutModalOpen(true)}
-                  className="mt-12 flex items-center gap-2 text-[#F8C730] font-bold text-sm uppercase tracking-widest hover:gap-4 transition-all"
-                >
-                  Scopri di più sulla nostra storia <ArrowRight size={16} />
-                </motion.button>
-              </div>
             </div>
           </div>
         </SectionWrapper>
@@ -913,7 +816,7 @@ export default function App() {
         </SectionWrapper>
 
         {/* Instagram Section */}
-        <SectionWrapper id="lavori" className="py-32">
+        <SectionWrapper id="lavori" className="py-32 overflow-hidden">
           <div className="container mx-auto px-6 text-center">
             <motion.div
               initial={{ opacity: 0 }}
@@ -925,36 +828,109 @@ export default function App() {
               <p className="text-white/40">Resta aggiornato sui nostri ultimi lavori e novità tecnologiche.</p>
             </motion.div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                "https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?auto=format&fit=crop&q=80&w=800", // LED ceiling blue
-                "https://images.unsplash.com/photo-1556911220-e15595b69581?auto=format&fit=crop&q=80&w=800", // Modern kitchen LED
-                "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800", // Kitchen chandelier
-                "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&q=80&w=800", // Automatic gate
-                "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800", // AC unit
-                "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=800", // Electrical panel
-                "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800", // Gate automation
-                "https://images.unsplash.com/photo-1599700403969-f77b3aa74837?auto=format&fit=crop&q=80&w=800", // Modern AC
-              ].map((img, i) => (
-                <motion.a
-                  key={i}
-                  href="https://www.instagram.com/jpower_insta"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 0.98 }}
-                  className="aspect-square bg-zinc-900 rounded-2xl overflow-hidden relative group"
+            {/* Dynamic Gallery with Manual Navigation */}
+            <div className="relative">
+              {/* Main Image Display */}
+              <div className="relative h-[400px] md:h-[500px] rounded-3xl overflow-hidden mb-8">
+                {galleryImages.map((img, i) => (
+                  <AnimatePresence key={i}>
+                    {currentImageIndex === i && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 1.1 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.5 }}
+                        className="absolute inset-0"
+                      >
+                        <motion.a
+                          href="https://www.instagram.com/jpower_insta"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block w-full h-full relative group cursor-pointer"
+                          whileHover={{ scale: 1.02 }}
+                        >
+                          <img 
+                            src={img} 
+                            alt={`Lavori J Power ${i + 1}`}
+                            className="w-full h-full object-cover"
+                            referrerPolicy="no-referrer"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                          <div className="absolute bottom-8 left-8 right-8 flex items-end justify-between">
+                            <div>
+                              <motion.div 
+                                initial={{ y: 20, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ delay: 0.2 }}
+                                className="bg-[#F8C730] p-3 rounded-full inline-flex mb-4"
+                              >
+                                <Instagram className="text-black" size={24} />
+                              </motion.div>
+                              <motion.p 
+                                initial={{ y: 20, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ delay: 0.3 }}
+                                className="text-white text-2xl font-black"
+                              >
+                                J POWER
+                              </motion.p>
+                              <motion.p 
+                                initial={{ y: 20, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ delay: 0.4 }}
+                                className="text-white/60"
+                              >
+                                Impianti Elettrici & Climatizzazione
+                              </motion.p>
+                            </div>
+                          </div>
+                        </motion.a>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                ))}
+
+                {/* Navigation Arrows */}
+                <button 
+                  onClick={prevImage}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-[#F8C730] hover:text-black transition-all z-10"
                 >
-                  <img 
-                    src={img} 
-                    alt="Instagram Post" 
-                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
-                    <Instagram className="text-white" size={32} />
-                  </div>
-                </motion.a>
-              ))}
+                  <ChevronRight className="rotate-180" size={24} />
+                </button>
+                <button 
+                  onClick={nextImage}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-[#F8C730] hover:text-black transition-all z-10"
+                >
+                  <ChevronRight size={24} />
+                </button>
+
+                {/* Image Counter */}
+                <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-md px-4 py-2 rounded-full text-white text-sm font-bold z-10">
+                  {currentImageIndex + 1} / {galleryImages.length}
+                </div>
+              </div>
+
+              {/* Thumbnail Navigation */}
+              <div className="flex justify-center gap-3">
+                {galleryImages.map((img, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentImageIndex(i)}
+                    className={`relative w-20 h-20 rounded-xl overflow-hidden transition-all ${
+                      currentImageIndex === i 
+                        ? 'ring-2 ring-[#F8C730] ring-offset-2 ring-offset-black scale-110' 
+                        : 'opacity-50 hover:opacity-100'
+                    }`}
+                  >
+                    <img 
+                      src={img} 
+                      alt={`Thumbnail ${i + 1}`}
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  </button>
+                ))}
+              </div>
             </div>
             
             <motion.a
@@ -965,6 +941,223 @@ export default function App() {
             >
               Vedi tutti i lavori <ArrowRight size={20} />
             </motion.a>
+          </div>
+        </SectionWrapper>
+
+        {/* Chi Siamo Section */}
+        <SectionWrapper id="chi-siamo" className="py-32 overflow-hidden">
+          <div className="container mx-auto px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="relative"
+              >
+                <div className="relative z-10 rounded-[2.5rem] overflow-hidden border border-white/10 group">
+                  <img 
+                    src="/images/Whisk_1a788b1bf96a6d490bd496a6f13dd122dr.png" 
+                    alt="Team J Power" 
+                    className="w-full h-64 md:h-auto md:aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-110"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
+                </div>
+                
+                {/* Floating Badge */}
+                <motion.div
+                  animate={{ y: [0, -20, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -bottom-10 -right-10 z-20 bg-[#F8C730] text-black p-8 rounded-3xl shadow-[0_20px_50px_rgba(248,199,48,0.3)] hidden md:block"
+                >
+                  <div className="text-4xl font-black leading-none">10</div>
+                  <div className="text-xs font-bold uppercase tracking-widest">Anni di<br />Eccellenza</div>
+                </motion.div>
+
+                {/* Decorative Circles */}
+                <div className="absolute -top-20 -left-20 w-64 h-64 bg-[#F8C730]/10 blur-3xl rounded-full -z-10" />
+              </motion.div>
+
+              <div>
+                <motion.span 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="text-[#F8C730] font-bold tracking-[0.3em] uppercase text-sm mb-6 block"
+                >
+                  La Nostra Storia
+                </motion.span>
+                <motion.h2 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 }}
+                  className="text-4xl md:text-6xl font-black mb-8 leading-tight"
+                >
+                  PASSIONE PER <br />
+                  <span className="text-white/20 text-stroke-white">L'INNOVAZIONE.</span>
+                </motion.h2>
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="space-y-6 text-white/60 text-lg font-light leading-relaxed"
+                >
+                  <p>
+                    J Power nasce dalla visione di portare l'eccellenza tecnica nel mondo dell'energia e della tecnologia. 
+                    Siamo un team di professionisti specializzati che crede fermamente nel potere dell'innovazione per migliorare la vita quotidiana.
+                  </p>
+                  <p>
+                    Ogni progetto che affrontiamo è guidato da tre pilastri fondamentali: 
+                    <span className="text-white font-bold"> sicurezza</span>, 
+                    <span className="text-white font-bold"> efficienza</span> e 
+                    <span className="text-white font-bold"> futuro</span>. 
+                    Non ci limitiamo a installare impianti; progettiamo soluzioni intelligenti che durano nel tempo.
+                  </p>
+                </motion.div>
+
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                  className="grid grid-cols-2 gap-8 mt-12"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-[#F8C730]/10 rounded-2xl flex items-center justify-center shrink-0">
+                      <CheckCircle2 className="text-[#F8C730]" size={24} />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white mb-1">Qualità</h4>
+                      <p className="text-xs text-white/40 uppercase tracking-widest">Materiali Certificati</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-[#F8C730]/10 rounded-2xl flex items-center justify-center shrink-0">
+                      <CheckCircle2 className="text-[#F8C730]" size={24} />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white mb-1">Supporto</h4>
+                      <p className="text-xs text-white/40 uppercase tracking-widest">Assistenza H24</p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.button
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 }}
+                  onClick={() => setIsAboutModalOpen(true)}
+                  className="mt-12 flex items-center gap-2 text-[#F8C730] font-bold text-sm uppercase tracking-widest hover:gap-4 transition-all"
+                >
+                  Scopri di più sulla nostra storia <ArrowRight size={16} />
+                </motion.button>
+              </div>
+            </div>
+          </div>
+        </SectionWrapper>
+
+        {/* CTA Section */}
+        <SectionWrapper id="contatti" className="py-20 md:py-32">
+          <div className="container mx-auto px-4 md:px-6">
+            <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-br from-[#F8C730] to-[#d4a81e] rounded-[2rem] md:rounded-[3rem] p-8 md:p-24 text-black relative overflow-hidden group"
+            >
+              {/* Decorative Elements */}
+              <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl group-hover:bg-white/20 transition-all duration-700" />
+              
+              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
+                <div>
+                  <motion.span 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    className="text-black/60 font-bold tracking-[0.3em] uppercase text-sm mb-4 block"
+                  >
+                    Contattaci
+                  </motion.span>
+                  <motion.h2 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 }}
+                    className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight"
+                  >
+                    PRONTO A <br />TRANSFORMARE <br />IL TUO PROGETTO?
+                  </motion.h2>
+                  <motion.p 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="text-black/70 text-lg md:text-xl font-medium mb-8"
+                  >
+                    Parliamone insieme. Senza impegno, solo chiacchiere.<br/>
+                    (che poi ti facciamo un preventivo reale)
+                  </motion.p>
+                  
+                  <div className="flex flex-col gap-4">
+                    <motion.a 
+                      href="tel:3492453251"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 }}
+                      className="flex items-center gap-4 text-black font-bold"
+                    >
+                      <div className="w-12 h-12 bg-black text-[#F8C730] rounded-full flex items-center justify-center">
+                        <PhoneCall size={20} />
+                      </div>
+                      +39 349 245 3251
+                    </motion.a>
+                    <motion.a 
+                      href="mailto:info@jpower.it"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4 }}
+                      className="flex items-center gap-4 text-black font-bold"
+                    >
+                      <div className="w-12 h-12 bg-black text-[#F8C730] rounded-full flex items-center justify-center">
+                        <Mail size={20} />
+                      </div>
+                      info@jpower.it
+                    </motion.a>
+                  </div>
+                </div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="bg-white/80 backdrop-blur-xl rounded-2xl p-6 md:p-8 shadow-2xl"
+                >
+                  <form className="space-y-4 md:space-y-6" onSubmit={(e) => e.preventDefault()}>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="text-[10px] md:text-xs uppercase font-black opacity-50 block mb-1">Nome</label>
+                        <input type="text" className="w-full bg-white border border-black/10 rounded-xl p-3 md:p-4 focus:outline-none focus:ring-2 focus:ring-black/20" placeholder="Il tuo nome" />
+                      </div>
+                      <div>
+                        <label className="text-[10px] md:text-xs uppercase font-black opacity-50 block mb-1">Telefono</label>
+                        <input type="tel" className="w-full bg-white border border-black/10 rounded-xl p-3 md:p-4 focus:outline-none focus:ring-2 focus:ring-black/20" placeholder="Il tuo telefono" />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="text-[10px] md:text-xs uppercase font-black opacity-50 block mb-1">Email</label>
+                      <input type="email" className="w-full bg-white border border-black/10 rounded-xl p-3 md:p-4 focus:outline-none focus:ring-2 focus:ring-black/20" placeholder="La tua email" />
+                    </div>
+                    <div>
+                      <label className="text-[10px] md:text-xs uppercase font-black opacity-50">Messaggio</label>
+                      <textarea className="w-full bg-white border border-black/10 rounded-xl p-3 md:p-4 h-24 md:h-32 focus:outline-none focus:ring-2 focus:ring-black/20" placeholder="Descrivi il tuo progetto..." />
+                    </div>
+                    <button className="w-full bg-black text-white py-4 md:py-5 rounded-xl md:rounded-2xl font-black text-base md:text-lg hover:scale-[1.02] transition-transform active:scale-95">
+                      INVIA RICHIESTA
+                    </button>
+                  </form>
+                </motion.div>
+              </div>
+            </motion.div>
           </div>
         </SectionWrapper>
       </main>
@@ -994,9 +1187,9 @@ export default function App() {
               <div>
                 <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-[#F8C730]">Legale</h4>
                 <ul className="space-y-4 text-white/60 text-sm">
-                  <li>Privacy Policy</li>
-                  <li>Cookie Policy</li>
-                  <li>Termini e Condizioni</li>
+                  <li><a href="/privacy.html" className="hover:text-white transition-colors">Privacy Policy</a></li>
+                  <li><a href="/cookie.html" className="hover:text-white transition-colors">Cookie Policy</a></li>
+                  <li><a href="/termini.html" className="hover:text-white transition-colors">Termini e Condizioni</a></li>
                 </ul>
               </div>
               <div className="col-span-2 md:col-span-1">
@@ -1013,21 +1206,24 @@ export default function App() {
           <div className="flex flex-col md:flex-row justify-between items-center pt-10 border-t border-white/5 gap-6 text-xs text-white/30 font-medium uppercase tracking-widest">
             <div>© 2024 J POWER. Tutti i diritti riservati.</div>
             <div>P.IVA: 14123770969</div>
-            <div>Designed with AI</div>
           </div>
         </div>
       </footer>
 
-      {/* Floating Call Button for Mobile */}
+      {/* Floating WhatsApp Button */}
       <motion.a
-        href="tel:3492453251"
+        href="https://wa.link/mkq8be"
+        target="_blank"
+        rel="noopener noreferrer"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className="fixed bottom-6 right-6 z-50 md:hidden bg-[#F8C730] text-black w-16 h-16 rounded-full flex items-center justify-center shadow-[0_10px_30px_rgba(248,199,48,0.5)]"
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-[0_10px_30px_rgba(37,211,102,0.5)] hover:shadow-[0_15px_40px_rgba(37,211,102,0.6)] transition-shadow"
       >
-        <PhoneCall size={28} />
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
       </motion.a>
     </div>
   );
