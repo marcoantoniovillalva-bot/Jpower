@@ -1189,41 +1189,52 @@ export default function App() {
 
       <footer className="py-20 border-t border-white/5 relative z-10">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-12 mb-20">
-            <div className="text-center md:text-left">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+            <div className="lg:col-span-1">
               <div className="text-3xl font-black mb-4">
                 J<span className="text-[#F8C730]">POWER</span>
               </div>
-              <p className="text-white/40 max-w-xs">
+              <p className="text-white/40 max-w-xs mb-6">
                 Innovazione elettrica e tecnologica per un futuro più sicuro ed efficiente.
               </p>
+              <div className="space-y-2 text-white/60 text-sm">
+                <p className="flex items-center gap-2">
+                  <MapPin size={16} className="text-[#F8C730] shrink-0" />
+                  Via Cattaneo 34, Abbiategrasso (MI)
+                </p>
+              </div>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-12">
-              <div>
-                <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-[#F8C730]">Link Rapidi</h4>
-                <ul className="space-y-4 text-white/60 text-sm">
-                  <li><a href="#servizi" className="hover:text-white transition-colors">Servizi</a></li>
-                  <li><a href="#chi-siamo" className="hover:text-white transition-colors">Chi Siamo</a></li>
-                  <li><a href="#lavori" className="hover:text-white transition-colors">Lavori</a></li>
-                  <li><a href="#contatti" className="hover:text-white transition-colors">Contatti</a></li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-[#F8C730]">Legale</h4>
-                <ul className="space-y-4 text-white/60 text-sm">
-                  <li><a href="/privacy.html" className="hover:text-white transition-colors">Privacy Policy</a></li>
-                  <li><a href="/cookie.html" className="hover:text-white transition-colors">Cookie Policy</a></li>
-                  <li><a href="/termini.html" className="hover:text-white transition-colors">Termini e Condizioni</a></li>
-                </ul>
-              </div>
-              <div className="col-span-2 md:col-span-1">
-                <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-[#F8C730]">Social</h4>
-                <div className="flex gap-4">
-                  <a href="https://www.instagram.com/jpower_insta" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-[#F8C730] hover:text-black transition-all">
-                    <Instagram size={20} />
-                  </a>
-                </div>
+            <div>
+              <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-[#F8C730]">Link Rapidi</h4>
+              <ul className="space-y-4 text-white/60 text-sm">
+                <li><a href="#servizi" className="hover:text-white transition-colors">Servizi</a></li>
+                <li><a href="#chi-siamo" className="hover:text-white transition-colors">Chi Siamo</a></li>
+                <li><a href="#lavori" className="hover:text-white transition-colors">Lavori</a></li>
+                <li><a href="#contatti" className="hover:text-white transition-colors">Contatti</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-[#F8C730]">Legale</h4>
+              <ul className="space-y-4 text-white/60 text-sm">
+                <li><a href="/privacy.html" className="hover:text-white transition-colors">Privacy Policy</a></li>
+                <li><a href="/cookie.html" className="hover:text-white transition-colors">Cookie Policy</a></li>
+                <li><a href="/termini.html" className="hover:text-white transition-colors">Termini e Condizioni</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-[#F8C730]">Dove Siamo</h4>
+              <div className="rounded-xl overflow-hidden border border-white/10">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2797.5!2d8.95!3d45.43!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sVia%20Cattaneo%2034%2C%20Abbiategrasso%20(MI)!5e0!3m2!1sit!2sit!4v1234567890"
+                  width="100%"
+                  height="150"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full"
+                />
               </div>
             </div>
           </div>
