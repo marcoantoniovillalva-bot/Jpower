@@ -362,7 +362,7 @@ const ServiceModal = ({ service, onClose }: { service: any, onClose: () => void 
 
               <div className="mt-12">
                 <a 
-                  href="#contatti" 
+                  href="tel:3492453251" 
                   onClick={onClose}
                   className="inline-flex items-center gap-3 bg-[#F8C730] text-black px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest hover:scale-105 transition-transform"
                 >
@@ -397,31 +397,31 @@ const AboutModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => void 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6"
+        className="fixed inset-0 z-[100] flex items-start justify-center p-2 md:p-6 overflow-y-auto"
       >
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="absolute inset-0 bg-black/90 backdrop-blur-xl" 
+          className="fixed inset-0 bg-black/90 backdrop-blur-xl" 
         />
         
         <motion.div
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
-          className="relative w-full max-w-4xl bg-zinc-900 border border-white/10 rounded-[2.5rem] overflow-hidden shadow-2xl"
+          className="relative w-full max-w-4xl bg-zinc-900 border border-white/10 rounded-2xl md:rounded-[2.5rem] overflow-hidden shadow-2xl my-4 md:my-8"
         >
           <button 
             onClick={onClose}
-            className="absolute top-6 right-6 z-20 w-12 h-12 bg-black/50 backdrop-blur-md border border-white/10 rounded-full flex items-center justify-center text-white hover:bg-[#F8C730] hover:text-black transition-all"
+            className="absolute top-3 right-3 md:top-6 md:right-6 z-20 w-10 h-10 md:w-12 md:h-12 bg-black/50 backdrop-blur-md border border-white/10 rounded-full flex items-center justify-center text-white hover:bg-[#F8C730] hover:text-black transition-all"
           >
-            <X size={24} />
+            <X size={20} />
           </button>
 
           <div className="grid grid-cols-1 md:grid-cols-2">
-            <div className="relative h-64 md:h-auto">
+            <div className="relative h-48 md:h-auto">
               <img 
                 src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=1200" 
                 alt="Chi Siamo" 
@@ -431,10 +431,10 @@ const AboutModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => void 
               <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent md:bg-gradient-to-r" />
             </div>
 
-            <div className="p-8 md:p-12 max-h-[70vh] overflow-y-auto custom-scrollbar">
-              <span className="text-[#F8C730] font-bold tracking-[0.3em] uppercase text-xs mb-4 block">La Nostra Visione</span>
-              <h2 className="text-3xl md:text-5xl font-black mb-6 leading-tight">ECCELLENZA E <br />AFFIDABILITÀ.</h2>
-              <div className="space-y-6 text-white/60 text-lg leading-relaxed mb-8">
+            <div className="p-4 md:p-12 overflow-y-auto max-h-[60vh] md:max-h-[70vh]">
+              <span className="text-[#F8C730] font-bold tracking-[0.3em] uppercase text-xs mb-2 md:mb-4 block">La Nostra Visione</span>
+              <h2 className="text-2xl md:text-5xl font-black mb-4 md:mb-6 leading-tight">ECCELLENZA E <br />AFFIDABILITÀ.</h2>
+              <div className="space-y-4 md:space-y-6 text-white/60 text-sm md:text-lg leading-relaxed mb-6 md:mb-8">
                 <p>
                   Fondata con l'obiettivo di ridefinire gli standard nel settore elettrico e tecnologico, J Power si è evoluta costantemente per abbracciare le sfide del futuro energetico.
                 </p>
@@ -446,16 +446,16 @@ const AboutModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => void 
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="p-6 bg-white/5 rounded-2xl border border-white/5">
-                  <Clock className="text-[#F8C730] mb-4" size={24} />
-                  <h4 className="font-bold text-white mb-2">Tempismo</h4>
-                  <p className="text-sm text-white/40 leading-relaxed">Interventi rapidi e scadenze sempre rispettate.</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-6">
+                <div className="p-4 md:p-6 bg-white/5 rounded-xl md:rounded-2xl border border-white/5">
+                  <Clock className="text-[#F8C730] mb-2 md:mb-4" size={20} />
+                  <h4 className="font-bold text-white mb-1 md:mb-2">Tempismo</h4>
+                  <p className="text-xs md:text-sm text-white/40 leading-relaxed">Interventi rapidi e scadenze sempre rispettate.</p>
                 </div>
-                <div className="p-6 bg-white/5 rounded-2xl border border-white/5">
-                  <ShieldCheck className="text-[#F8C730] mb-4" size={24} />
-                  <h4 className="font-bold text-white mb-2">Sicurezza</h4>
-                  <p className="text-sm text-white/40 leading-relaxed">Impianti certificati secondo le più rigide normative.</p>
+                <div className="p-4 md:p-6 bg-white/5 rounded-xl md:rounded-2xl border border-white/5">
+                  <ShieldCheck className="text-[#F8C730] mb-2 md:mb-4" size={20} />
+                  <h4 className="font-bold text-white mb-1 md:mb-2">Sicurezza</h4>
+                  <p className="text-xs md:text-sm text-white/40 leading-relaxed">Impianti certificati secondo le più rigide normative.</p>
                 </div>
               </div>
             </div>
@@ -1167,7 +1167,7 @@ export default function App() {
                     transition={{ delay: 0.1 }}
                     className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight"
                   >
-                    PRONTO A <br />TRANSFORMARE <br />IL TUO PROGETTO?
+                    PRONTO A <br />PARTIRE?
                   </motion.h2>
                   <motion.p 
                     initial={{ opacity: 0, y: 20 }}
@@ -1175,8 +1175,7 @@ export default function App() {
                     transition={{ delay: 0.2 }}
                     className="text-black/70 text-lg md:text-xl font-medium mb-8"
                   >
-                    Parliamone insieme. Senza impegno, solo chiacchiere.<br/>
-                    (che poi ti facciamo un preventivo reale)
+                    Chiamaci per una consulenza gratuita. I nostri tecnici sono pronti a rispondere a tutte le tue domande.
                   </motion.p>
                   
                   <div className="flex flex-col gap-4">
@@ -1205,37 +1204,30 @@ export default function App() {
                       info@jpower.it
                     </motion.a>
                   </div>
+
+                  <motion.a 
+                    href="tel:3492453251"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                    className="inline-flex items-center gap-3 mt-8 bg-black text-white px-8 py-4 rounded-2xl font-bold hover:scale-105 transition-transform"
+                  >
+                    Richiedi un preventivo
+                  </motion.a>
                 </div>
 
                 <motion.div
                   initial={{ opacity: 0, x: 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="bg-white/80 backdrop-blur-xl rounded-2xl p-6 md:p-8 shadow-2xl"
+                  className="hidden lg:block"
                 >
-                  <form className="space-y-4 md:space-y-6" onSubmit={(e) => e.preventDefault()}>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <label className="text-[10px] md:text-xs uppercase font-black opacity-50 block mb-1">Nome</label>
-                        <input type="text" className="w-full bg-white border border-black/10 rounded-xl p-3 md:p-4 focus:outline-none focus:ring-2 focus:ring-black/20" placeholder="Il tuo nome" />
-                      </div>
-                      <div>
-                        <label className="text-[10px] md:text-xs uppercase font-black opacity-50 block mb-1">Telefono</label>
-                        <input type="tel" className="w-full bg-white border border-black/10 rounded-xl p-3 md:p-4 focus:outline-none focus:ring-2 focus:ring-black/20" placeholder="Il tuo telefono" />
-                      </div>
-                    </div>
-                    <div>
-                      <label className="text-[10px] md:text-xs uppercase font-black opacity-50 block mb-1">Email</label>
-                      <input type="email" className="w-full bg-white border border-black/10 rounded-xl p-3 md:p-4 focus:outline-none focus:ring-2 focus:ring-black/20" placeholder="La tua email" />
-                    </div>
-                    <div>
-                      <label className="text-[10px] md:text-xs uppercase font-black opacity-50">Messaggio</label>
-                      <textarea className="w-full bg-white border border-black/10 rounded-xl p-3 md:p-4 h-24 md:h-32 focus:outline-none focus:ring-2 focus:ring-black/20" placeholder="Descrivi il tuo progetto..." />
-                    </div>
-                    <button className="w-full bg-black text-white py-4 md:py-5 rounded-xl md:rounded-2xl font-black text-base md:text-lg hover:scale-[1.02] transition-transform active:scale-95">
-                      INVIA RICHIESTA
-                    </button>
-                  </form>
+                  <img 
+                    src="/images/Whisk_1a788b1bf96a6d490bd496a6f13dd122dr.png" 
+                    alt="J Power Team" 
+                    className="rounded-2xl shadow-2xl"
+                    referrerPolicy="no-referrer"
+                  />
                 </motion.div>
               </div>
             </motion.div>
