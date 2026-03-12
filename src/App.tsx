@@ -686,7 +686,7 @@ export default function App() {
         "Sistemi nebbiogeni"
       ],
       icon: ShieldCheck,
-      image: "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&q=80&w=800",
+      image: "/images/Whisk_0039f7584cc896bb18a4a9ad9df39355eg.png",
       delay: 0.4
     },
     {
@@ -701,7 +701,7 @@ export default function App() {
         "Sostituzione vecchi impianti"
       ],
       icon: PhoneCall,
-      image: "/images/Whisk_57338715a1da1afb8d7418871d50ca8edr.jpeg",
+      image: "/images/Whisk_a95048babe1c8a0810f48e93804733dcdr.png",
       delay: 0.5
     }
   ];
@@ -1142,93 +1142,39 @@ export default function App() {
 
         {/* CTA Section */}
         <SectionWrapper id="contatti" className="py-20 md:py-32">
-          <div className="container mx-auto px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6 text-center">
             <motion.div 
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-[#F8C730] to-[#d4a81e] rounded-[2rem] md:rounded-[3rem] p-8 md:p-24 text-black relative overflow-hidden group"
+              className="bg-gradient-to-br from-[#F8C730] to-[#d4a81e] rounded-[2rem] md:rounded-[3rem] p-8 md:p-16 text-black relative overflow-hidden group"
             >
-              {/* Decorative Elements */}
-              <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl group-hover:bg-white/20 transition-all duration-700" />
-              
-              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
-                <div>
-                  <motion.span 
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    className="text-black/60 font-bold tracking-[0.3em] uppercase text-sm mb-4 block"
-                  >
-                    Contattaci
-                  </motion.span>
-                  <motion.h2 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 }}
-                    className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight"
-                  >
-                    PRONTO A <br />PARTIRE?
-                  </motion.h2>
-                  <motion.p 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="text-black/70 text-lg md:text-xl font-medium mb-8"
-                  >
-                    Chiamaci per una consulenza gratuita. I nostri tecnici sono pronti a rispondere a tutte le tue domande.
-                  </motion.p>
-                  
-                  <div className="flex flex-col gap-4">
-                    <motion.a 
-                      href="tel:3492453251"
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.3 }}
-                      className="flex items-center gap-4 text-black font-bold"
-                    >
-                      <div className="w-12 h-12 bg-black text-[#F8C730] rounded-full flex items-center justify-center">
-                        <PhoneCall size={20} />
-                      </div>
-                      +39 349 245 3251
-                    </motion.a>
-                    <motion.a 
-                      href="mailto:info@jpower.it"
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.4 }}
-                      className="flex items-center gap-4 text-black font-bold"
-                    >
-                      <div className="w-12 h-12 bg-black text-[#F8C730] rounded-full flex items-center justify-center">
-                        <Mail size={20} />
-                      </div>
-                      info@jpower.it
-                    </motion.a>
-                  </div>
-
-                  <motion.a 
-                    href="tel:3492453251"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
-                    className="inline-flex items-center gap-3 mt-8 bg-black text-white px-8 py-4 rounded-2xl font-bold hover:scale-105 transition-transform"
-                  >
-                    Richiedi un preventivo
-                  </motion.a>
-                </div>
-
-                <motion.div
-                  initial={{ opacity: 0, x: 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2 }}
-                  className="hidden lg:block"
+              <div className="relative z-10">
+                <motion.h2 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight"
                 >
-                  <img 
-                    src="/images/Whisk_1a788b1bf96a6d490bd496a6f13dd122dr.png" 
-                    alt="J Power Team" 
-                    className="rounded-2xl shadow-2xl"
-                    referrerPolicy="no-referrer"
-                  />
-                </motion.div>
+                  HAI BISOGNO DI UN PREVENTIVO?
+                </motion.h2>
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="text-black/70 text-lg md:text-xl font-medium mb-8"
+                >
+                  I nostri tecnici sono pronti a rispondere a tutte le tue domande.
+                </motion.p>
+                  
+                <motion.a 
+                  href="tel:3492453251"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="inline-flex items-center gap-3 bg-black text-white px-10 py-5 rounded-2xl font-bold text-lg hover:scale-105 transition-transform"
+                >
+                  Richiedi un preventivo
+                </motion.a>
               </div>
             </motion.div>
           </div>
