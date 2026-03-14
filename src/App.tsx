@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence, useInView } from 'motion/react';
 import { 
   Zap, 
   Wind, 
@@ -578,6 +578,44 @@ const Hero = () => {
   );
 };
 
+const Counter = ({ end, suffix = '', duration = 2 }: { end: number; suffix?: string; duration?: number }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    let start = 0;
+    const increment = end / (duration * 60);
+    
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 1000 / 60);
+
+    return () => clearInterval(timer);
+  }, [isInView, end, duration]);
+
+  return <span ref={ref}>{count}{suffix}</span>;
+};
+  <motion.section
+    id={id}
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-100px" }}
+    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+    className={cn("relative z-10", className)}
+  >
+    {children}
+  </motion.section>
+);
+
 const SectionWrapper = ({ children, className, id }: { children: React.ReactNode, className?: string, id?: string }) => (
   <motion.section
     id={id}
@@ -719,10 +757,10 @@ export default function App() {
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
-                { label: 'Anni di Esperienza', value: '10+' },
-                { label: 'Progetti Completati', value: '500+' },
-                { label: 'Clienti Soddisfatti', value: '100%' },
-                { label: 'Certificazioni', value: 'ISO' },
+                { label: 'Anni di Esperienza', value: 10, suffix: '+' },
+                { label: 'Progetti Completati', value: 500, suffix: '+' },
+                { label: 'Clienti Soddisfatti', value: 100, suffix: '%' },
+                { label: 'Certificazioni', value: 'ISO', isStatic: true },
               ].map((stat, i) => (
                 <motion.div 
                   key={i}
@@ -731,7 +769,9 @@ export default function App() {
                   viewport={{ once: true }}
                   className="text-center"
                 >
-                  <div className="text-4xl md:text-6xl font-black text-[#F8C730] mb-2">{stat.value}</div>
+                  <div className="text-4xl md:text-6xl font-black text-[#F8C730] mb-2">
+                    {stat.isStatic ? stat.value : <Counter end={stat.value} suffix={stat.suffix} />}
+                  </div>
                   <div className="text-white/40 text-sm uppercase tracking-widest font-bold">{stat.label}</div>
                 </motion.div>
               ))}
